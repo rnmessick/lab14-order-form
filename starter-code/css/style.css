@@ -1,1 +1,44 @@
 /* TODO: Make it awesome */
+*{
+  box-sizing: border-box;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+section{
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  border: solid 5px rgb(122, 10, 10);
+  padding: 5px;
+  border-radius: 10px;
+}
+h1{
+  text-shadow: 2px 2px 5px red;
+  font-size: 1.5em;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-left: 50px;
+  text-align: center;
+
+}
+header{
+  height: 120px;
+  position: relative;
+  background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
+}
+
+nav > ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav > ul > li {
+  float: left;
+  margin-right: 50px;
+  line-height: 60px;
+}
+

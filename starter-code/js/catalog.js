@@ -41,7 +41,7 @@ function addSelectedItemToCart() {
   var quantity = parseInt(document.getElementById('quantity').value);
   // DONE: get the quantity
   var items = document.getElementById('items').value;
-  console.log('items');
+  // console.log('items');
 
   // DONE: using those, add one item to the Cart
   cart.addItem(items, quantity);
@@ -51,9 +51,18 @@ function addSelectedItemToCart() {
 
 // DONE: Update the cart count in the header nav with the number of items in the Cart
 function updateCounter() {
-  var count = JSON.parse(localStorage.getItem('count'));
+  var quantity = JSON.parse(localStorage.getItem('quantity'));
   var itemCount = document.getElementById('itemCount');
-  itemCount.textContent = count;
+  var counter;
+
+  if(localStorage.getItem('counter')){
+    counter = JSON.parse(localStorage.getItem('counter'));
+  } else {
+    counter = 0;
+  }
+  counter += quantity;
+  itemCount.textContent = ' ' + counter;
+  localStorage.setItem('counter', JSON.stringify(counter));
 
 }
 // DONE: As you add items into the cart, show them (item & quantity) in the cart preview div
@@ -68,7 +77,7 @@ function updateCartPreview() {
   
   var liEl = document.createElement('li');
   liEl.textContent = 'Item: ' + items + ' Quantity: ' + quantity;  
-  ulEl.appendChild(liEl); 
+  ulEl.appendChild(liEl);
   cartEl.appendChild(ulEl);
 }
 
