@@ -38,20 +38,20 @@ function handleSubmit(event) {
 // DONE: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
   // DONE: suss out the item picked from the select list
-  var quantity = parseInt(document.getElementById('quantity').value);
+  var quantitySelected = parseInt(document.getElementById('quantity').value);
   // DONE: get the quantity
-  var items = document.getElementById('items').value;
+  var itemsSelected = document.getElementById('items').value;
   // console.log('items');
 
   // DONE: using those, add one item to the Cart
-  cart.addItem(items, quantity);
+  cart.addItem(itemsSelected, quantitySelected);
 
 
 }
 
 // DONE: Update the cart count in the header nav with the number of items in the Cart
 function updateCounter() {
-  var quantity = JSON.parse(localStorage.getItem('quantity'));
+  var quantitySelected = JSON.parse(localStorage.getItem('quantity'));
   var itemCount = document.getElementById('itemCount');
   var counter;
 
@@ -60,7 +60,7 @@ function updateCounter() {
   } else {
     counter = 0;
   }
-  counter += quantity;
+  counter += quantitySelected;
   itemCount.textContent = ' ' + counter;
   localStorage.setItem('counter', JSON.stringify(counter));
 
@@ -74,9 +74,8 @@ function updateCartPreview() {
 
   var cartEl = document.getElementById('cartContents');
   var ulEl = document.createElement('ul');
-  
   var liEl = document.createElement('li');
-  liEl.textContent = 'Item: ' + items + ' Quantity: ' + quantity;  
+  liEl.textContent = 'Item: ' + items + ' Quantity: ' + quantity;
   ulEl.appendChild(liEl);
   cartEl.appendChild(ulEl);
 }
