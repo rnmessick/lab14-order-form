@@ -3,20 +3,20 @@
 
 // Create an event listener so that when the delete link is clicked, the removeItemFromCart method is invoked.
 var table = document.getElementById('cart');
-var tableBodyEL = document.querySelector('#cart > tbody');
-var trEl = document.createElement('tr');
+
+
 table.addEventListener('click', removeItemFromCart);
 var cart;
 
 function loadCart() {
-  var cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+  var cartItems = JSON.parse(localStorage.getItem('items')) || [];
   cart = new Cart(cartItems);
 }
 
 // Make magic happen --- re-pull the Cart, clear out the screen and re-draw it
 function renderCart() {
   loadCart();
-  clearCart();
+  // clearCart();
   showCart();
 }
 
@@ -32,28 +32,26 @@ function clearCart() {
 function showCart() {
 
   // TODO: Find the table body   
-  var cartItems = document.getElementById('items');
-  var cartQuantity = document.getElementById('items');
+  var tableBodyEL = document.querySelector('#cart > tbody');
   // TODO: Iterate over the items in the cart
-  for(var i = 0; i < cartItems.length; i++ ){
+  for(var i = 0; i < cart.items.length; i++ ){
     // TODO: Create a TR
-
+    var trEl = document.createElement('tr');
     // TODO: Create a TD for the delete link, quantity,  and the item
-    var tdEl = document.createElement('td');
-    tdEl.textContent = 'delete link';
-    trEl.appendChild(tdEl);
+    var tdEl1 = document.createElement('td');
+    tdEl1.innerHTML = `<button>X</button>`;
 
-    tdEl = document.createElement('td');
-    tdEl.textContent = cartQuantity;
-    trEl.appendChild(tdEl);
+    var tdEl2 = document.createElement('td');
+    tdEl2.textContent = cart.items[i].quantity;
 
-    tdEl = document.createElement('td');
-    tdEl.textContent = cartItems;
-    trEl.appendChild(tdEl);
-    
+    var tdEl3 = document.createElement('td');
+    tdEl3.textContent = cart.items[i].product;
+    trEl.appendChild(tdEl1);
+    trEl.appendChild(tdEl2);
+    trEl.appendChild(tdEl3);
+    tableBodyEL.appendChild(trEl);
+      
   }
-
-  tableBodyEL.appendChild(trEl);
 
  
   // TODO: Add the TR to the TBODY and each of the TD's to the TR

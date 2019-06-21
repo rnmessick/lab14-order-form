@@ -38,9 +38,9 @@ function handleSubmit(event) {
 // DONE: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
   // DONE: suss out the item picked from the select list
-  var quantity = document.getElementById('items').value;
+  var quantity = parseInt(document.getElementById('quantity').value);
   // DONE: get the quantity
-  var items = document.getElementById('items').value;  
+  var items = document.getElementById('items').value;
   console.log('items');
 
   // DONE: using those, add one item to the Cart
@@ -59,17 +59,17 @@ function updateCounter() {
 // DONE: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
   // DONE: Get the item and quantity from the form
-  var quantity = document.getElementById('quantity').value;
+  var quantity = parseInt(document.getElementById('quantity').value);
   var items = document.getElementById('items').value;
   // DONE: Add a new element to the cartContents div with that information
 
   var cartEl = document.getElementById('cartContents');
   var ulEl = document.createElement('ul');
-  cartEl.appendChild(ulEl);
-
+  
   var liEl = document.createElement('li');
-  liEl.textContent = `${items}: ${quantity}`; 
-  ulEl.appendChild(liEl);
+  liEl.textContent = 'Item: ' + items + ' Quantity: ' + quantity;  
+  ulEl.appendChild(liEl); 
+  cartEl.appendChild(ulEl);
 }
 
 // Set up the "submit" event listener on the form.
